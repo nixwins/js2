@@ -105,23 +105,23 @@
 //     console.log("error", e);
 //   });
 
-const res2 = fetch("https://dummyjson.com/todos");
-console.log(res2);
+// const res2 = fetch("https://dummyjson.com/todos");
+// console.log(res2);
 
-const jsonProm = res2.then((data) => {
-  console.log("data", data);
-  const jsonData = data.json();
-  return jsonData;
-});
+// const jsonProm = res2.then((data) => {
+//   console.log("data", data);
+//   const jsonData = data.json();
+//   return jsonData;
+// });
 
-console.log("jsonProm", jsonProm);
+// console.log("jsonProm", jsonProm);
 
-jsonProm.then((data) => {
-  console.log("data mu", data);
-  data.todos.forEach((todo) => {
-    document.body.innerHTML += `<div>${todo.todo}</div>`;
-  });
-});
+// jsonProm.then((data) => {
+//   console.log("data mu", data);
+//   data.todos.forEach((todo) => {
+//     document.body.innerHTML += `<div>${todo.todo}</div>`;
+//   });
+// });
 
 // const user = {
 //   name: "John",
@@ -131,3 +131,77 @@ jsonProm.then((data) => {
 // const userToJson = JSON.stringify(user);
 
 // console.log(userToJson);
+
+const users = [
+  {
+    name: "John",
+    age: 20,
+  },
+  {
+    name: "Jane",
+    age: 21,
+  },
+  {
+    name: "Jim",
+    age: 22,
+  },
+  {
+    name: "Dos",
+    age: 23,
+  },
+];
+
+const numbers = [1, 2, 3, 4, 5];
+// true or false
+const filteredUsers = users.filter((user) => {
+  if (user.age > 21) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+const filteredNumbers = numbers.filter((number) => {
+  if (number > 2) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+console.log(filteredUsers);
+console.log(filteredNumbers);
+
+const inputEl = document.querySelector(".input");
+console.dir(inputEl);
+inputEl.oninput = function (e) {
+  const inputValue = e.target.value;
+  const filteredUsers = users.filter((user) => {
+    if (user.name.includes(inputValue)) {
+      return user;
+    }
+    // console.log("user", user);
+    // return user.name.includes(inputValue);
+  });
+
+  console.log(filteredUsers);
+};
+
+const num = 12;
+
+console.log(num.toFixed(2));
+
+const str = "Dos-Askar";
+
+console.log(str.split("-"));
+// undefined = false -1 = false 0 = false "" = false NaN = false null = false '' = false
+
+// console.log(users.filter((user) => user.age > 21));
+
+const userDos = users.find((user) => {
+  if (user.name === "Dos") {
+    return true;
+  }
+});
+
+console.log(userDos);
